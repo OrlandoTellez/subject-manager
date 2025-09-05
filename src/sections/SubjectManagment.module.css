@@ -1,0 +1,44 @@
+.container{
+    width: 100%;
+    height: 100%;
+    max-width: var(--ancho-maximo);
+}
+
+.containerCreateSubject{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: white;
+    padding: 20px;
+}
+
+.containerCreateSubject div{
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.containerCreateSubject input{
+    padding: 10px;
+    border-radius: 7px;
+    width: 100%;
+}
+
+.containerCreateSubject button{
+    background-color: #2563eb;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+}
+
+.containerSubjects{
+      display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: white;
+    padding: 20px;
+}
