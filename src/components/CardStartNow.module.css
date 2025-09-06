@@ -1,0 +1,35 @@
+.card {
+    background-color: black;
+    width: 100%;
+    border: 1px solid white;
+    border-radius: 7px;
+    padding: 20px;
+    max-width: 400px;
+}
+
+.info {
+    display: grid;
+    place-items: center;
+    text-align: center;
+    gap: 10px;
+}
+
+.info h5{
+    font-size: 1.7rem;
+}
+
+.containerButtons button {
+    background-color: #2563eb;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.iconContainer{
+    display: grid;
+    place-items: center;
+    margin-bottom: 10px;
+}

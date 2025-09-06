@@ -1,0 +1,38 @@
+.titleBar {
+  width: 100%;
+  height: 32px;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  user-select: none;
+  border-bottom: 1px solid #333;
+  position: fixed;
+}
+
+.button {
+  padding: 0 12px;
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  height: 100%;
+}
+
+.button:hover {
+  background-color: #333;
+}
+
+.minimize:hover {
+  background-color: #444;
+}
+
+.maximize:hover {
+  background-color: #444;
+}
+
+.close:hover {
+  background-color: #b91c1c; /* rojo */
+}

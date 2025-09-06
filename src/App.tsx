@@ -2,20 +2,17 @@ import { Header } from "./components/Header";
 import "./App.css";
 import { Hero } from "./sections/Hero";
 import { SubjectManagment } from "./sections/SubjectManagment";
+import CustomTitleBar from "./components/CustomTitleBar";
 
 const App: React.FC = () => {
 
 
   return (
     <>
-      <Header />
+      <CustomTitleBar />
       <div className="app">
-        <section className="container">
-          <Hero />
-        </section>
-      </div>
-      <div className="appContainer">
-        <SubjectManagment />
+          <Hero /> 
+          <SubjectManagment />
       </div>
     </>
   );
