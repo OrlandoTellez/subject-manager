@@ -1,4 +1,3 @@
-import { Header } from "./components/Header";
 import "./App.css";
 import { Hero } from "./sections/Hero";
 import { SubjectManagment } from "./sections/SubjectManagment";

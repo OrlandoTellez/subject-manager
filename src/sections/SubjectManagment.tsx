@@ -35,9 +35,9 @@ export const SubjectManagment = () => {
         <>
             <section className={styles.container}>
                 <article className={styles.articleStart}>
-                    <CardStartNow />
+                    <CardStartNow createSubject={createSubject} />
                 </article>
-                
+
                 <section className={styles.containerCreate}>
 
                     <article className={styles.containerCreateSubject}>
@@ -54,64 +54,64 @@ export const SubjectManagment = () => {
 
                     <article className={styles.containerSubjects}>
                         <h2>Subjects</h2>
-                    {subjects.map((subject, idx) => (
-                        <div key={idx}>
-                            <button onClick={() => setSelectedSubject(subject)}>
-                                Select {subject.name}
-                            </button>
-                        </div>
-                    ))}
+                        {subjects.map((subject, idx) => (
+                            <div key={idx}>
+                                <button onClick={() => setSelectedSubject(subject)}>
+                                    Select {subject.name}
+                                </button>
+                            </div>
+                        ))}
 
-                    {selectedSubject && (
-                        <div>
-                            <h2>{selectedSubject.name}</h2>
-                            <p>Total Students: {selectedSubject.countStudents()}</p>
+                        {selectedSubject && (
+                            <div>
+                                <h2>{selectedSubject.name}</h2>
+                                <p>Total Students: {selectedSubject.countStudents()}</p>
 
-                            <h3>Add Student</h3>
-                            <input
-                                type="number"
-                                value={studentID}
-                                onChange={(e) => setStudentID(Number(e.target.value))}
-                                placeholder="ID"
-                            />
-                            <input
-                                value={studentName}
-                                onChange={(e) => setStudentName(e.target.value)}
-                                placeholder="Name"
-                            />
-                            <button onClick={addStudent}>Add</button>
+                                <h3>Add Student</h3>
+                                <input
+                                    type="number"
+                                    value={studentID}
+                                    onChange={(e) => setStudentID(Number(e.target.value))}
+                                    placeholder="ID"
+                                />
+                                <input
+                                    value={studentName}
+                                    onChange={(e) => setStudentName(e.target.value)}
+                                    placeholder="Name"
+                                />
+                                <button onClick={addStudent}>Add</button>
 
-                            <h3>Student List</h3>
-                            <button
-                                onClick={() => {
-                                    selectedSubject.invertList();
-                                    setSubjects([...subjects]);
-                                }}
-                            >
-                                Invert List
-                            </button>
-                            <button
-                                onClick={() => {
-                                    selectedSubject.deleteRepeatedStudents();
-                                    setSubjects([...subjects]);
-                                }}
-                            >
-                                Remove Duplicates
-                            </button>
-                            <ul>
-                                {selectedSubject.printStudents().map((student) => (
-                                    <li key={student.id}>
-                                        {student.id} - {student.name}{" "}
-                                        <button onClick={() => removeStudent(student.id)}>Remove</button>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    )}
+                                <h3>Student List</h3>
+                                <button
+                                    onClick={() => {
+                                        selectedSubject.invertList();
+                                        setSubjects([...subjects]);
+                                    }}
+                                >
+                                    Invert List
+                                </button>
+                                <button
+                                    onClick={() => {
+                                        selectedSubject.deleteRepeatedStudents();
+                                        setSubjects([...subjects]);
+                                    }}
+                                >
+                                    Remove Duplicates
+                                </button>
+                                <ul>
+                                    {selectedSubject.printStudents().map((student) => (
+                                        <li key={student.id}>
+                                            {student.id} - {student.name}{" "}
+                                            <button onClick={() => removeStudent(student.id)}>Remove</button>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
                     </article>
                 </section>
 
-                
+
             </section>
         </>
     )

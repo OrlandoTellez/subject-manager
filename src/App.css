@@ -1,9 +1,12 @@
 :root {
-  --primary-color: black;
-  --color-title: white;
-  --color-text: white;
-  --color-button: #2563eb;
-  --color-text-opacity: rgb(116, 116, 116);
+  --primary-color: #1c1c1c;
+  --secondary-color: #fafafa;
+  --third-color: #4a4a4a;
+  --color-title: #fafafa;
+  --color-text: black;
+  --color-button: #fafafa;
+  --color-text-opacity: #8d8d8d;
+  --border-color: #8d8d8d;
   --ancho-maximo: 1200px;
 }
 
@@ -14,7 +17,7 @@
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Plus Jakarta Sans Variable', sans-serif;
   background-color: var(--primary-color);
   color: var(--color-text);
 }
@@ -29,6 +32,41 @@ body {
   gap: 20px;
 }
 
+h1, h2, h3, h4, h5, h6{
+  color: var(--color-title);
+}
+
+h1{
+  font-size: 3rem;
+  color: var(--color-title);
+}
+
 p{
   color: var(--color-text-opacity);
+}
+
+label{
+  color: var(--color-title);
+}
+
+input{
+  padding: 10px;
+  border-radius: 7px;
+  border: none;
+  width: 100%;
+  background-color: var(--third-color);
+}
+
+textarea{
+  padding: 10px;
+  border-radius: 7px;
+  border: none;
+  width: 100%;
+  background-color: var(--third-color);
+}
+
+button{
+  background-color: var(--color-button);
+  color: var(--color-text);
+  font-weight: bold;
 }

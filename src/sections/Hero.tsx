@@ -3,14 +3,21 @@ import logoIcon from "../assets/icons/logo.svg"
 import bookIcon from "../assets/icons/books.svg"
 import studentsIcon from "../assets/icons/students.svg"
 import listsIcon from "../assets/icons/lists.svg"
-import logoReact from "../assets/react.svg"
+import { AddSubject } from "../components/modals/AddSubject";
+import { useState } from "react";
 
 export const Hero = () => {
+  const [showModal, setShowModal] = useState(false)
+
+  const handleClose = () => setShowModal(false)
+
+  const openModal = () => setShowModal(true)
+
   return (
     <>
         <section className={styles.container}>
           <article className={styles.containerArticle}>
-            <div>
+            <div className={styles.logo}>
               <img src={logoIcon} alt="logo icon" />
             </div>
             <article>
@@ -35,7 +42,13 @@ export const Hero = () => {
           </article>
 
           <div className={styles.containerButtons}>
-            <button>+ Nueva materia</button>
+            <button onClick={openModal}>+ Nueva materia</button>
+
+            {
+              showModal && (
+                <AddSubject handleClose={handleClose} createSubject={() => { alert("Creada") }} />
+              )
+            }
           </div>
         </section>
     </>

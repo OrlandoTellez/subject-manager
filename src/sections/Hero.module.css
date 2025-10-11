@@ -6,6 +6,7 @@
     gap: 20px;
     height: 50vh;
     padding-top: 40px;
+    background-color: black;
 }
 
 .containerArticle{
@@ -14,15 +15,16 @@
     gap: 20px;
 }
 
+.logo{
+    background-color: var(--third-color);
+    padding: 10px;
+    border-radius: 20px;
+}
+
 .containerArticle div{
     display: flex;
     align-items: center;
     gap: 10px;
-}
-
-.containerArticle h1{
-    font-size: 2rem;
-
 }
 
 .containerButtons{
@@ -30,14 +32,10 @@
     gap: 10px;
     width: 100%;
     justify-content: center;
-
 }
 
 .containerButtons button{
-    background-color: #2563eb;
-    color: white;
     padding: 10px 20px;
-    border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;

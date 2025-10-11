@@ -1,7 +1,7 @@
 .card {
-    background-color: black;
+    background-color: var(--primary-color);
     width: 100%;
-    border: 1px solid white;
+    border: 1px solid var(--border-color);
     border-radius: 7px;
     padding: 20px;
     max-width: 400px;
@@ -19,8 +19,6 @@
 }
 
 .containerButtons button {
-    background-color: #2563eb;
-    color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -32,4 +30,11 @@
     display: grid;
     place-items: center;
     margin-bottom: 10px;
+}
+
+.iconContainer img{
+    width: 50px;
+    background-color: var(--third-color);
+    padding: 10px;
+    border-radius: 10px;
 }
