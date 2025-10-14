@@ -46,7 +46,7 @@ export const Hero = () => {
 
             {
               showModal && (
-                <AddSubject handleClose={handleClose} createSubject={() => { alert("Creada") }} />
+                <AddSubject handleClose={handleClose} />
               )
             }
           </div>

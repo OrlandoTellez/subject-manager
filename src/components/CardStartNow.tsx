@@ -3,12 +3,9 @@ import lightIcon from "../assets/icons/ligth.svg"
 import { AddSubject } from "./modals/AddSubject"
 import { useState } from "react"
 
-interface Props {
-    createSubject: () => void
-}
-
-export const CardStartNow = ({ createSubject }: Props) => {
+export const CardStartNow = () => {
     const [showModal, setShowModal] = useState(false)
+
 
     const handleClose = () => setShowModal(false)
     const openModal = () => setShowModal(true)
@@ -25,7 +22,7 @@ export const CardStartNow = ({ createSubject }: Props) => {
                         <button onClick={openModal}>+ Crea tu primera materia</button>
                         {
                             showModal && (
-                                <AddSubject handleClose={handleClose} createSubject={createSubject} />
+                                <AddSubject handleClose={handleClose} />
                             )
                         }
                     </div>
