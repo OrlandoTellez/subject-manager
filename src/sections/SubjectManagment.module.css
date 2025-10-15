@@ -49,11 +49,13 @@
 .subjectList{
     display: grid;
     width: 100%;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 10px;
     padding: 20px 20px;
     align-items: center;
     justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .subjectCard{
@@ -65,6 +67,11 @@
     justify-content: center;
     background-color: var(--color-primary);
     border: 1px solid var(--border-color);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.subjectCard button{
     padding: 10px;
     border-radius: 5px;
 }

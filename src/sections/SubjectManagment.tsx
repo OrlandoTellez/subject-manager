@@ -41,7 +41,7 @@ export const SubjectManagment = () => {
                             <div key={idx} className={styles.subjectCard}>
                                 <h3>{subject.name}</h3>
                                 <div>
-                                    <span>Students: 0</span>
+                                    <span>Estudiantes: {subject.students.count()}</span>
                                 </div>
                                 <button onClick={() => openModal(subject)}>
                                     Gestionar

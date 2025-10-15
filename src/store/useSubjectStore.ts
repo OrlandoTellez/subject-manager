@@ -37,15 +37,27 @@ export const useSubjectStore = create<SubjectStore>((set, get) => ({
 
     const subjects = parsed.map((s: any) => {
       const subject = new Subject(s.name);
-      const list = new LinkedList();
 
-      s.students.forEach((student: Student) => list.insert(student));
+      let studentsArray: Student[] = [];
 
+      if (Array.isArray(s.students)) {
+        studentsArray = s.students;
+      } else if (s.students?.head) {
+        let current = s.students.head;
+        while (current) {
+          studentsArray.push(current.student);
+          current = current.next;
+        }
+      }
+
+      const list = new LinkedList(studentsArray);
       subject.students = list;
+
       return subject;
     });
 
     set({ subjects });
   },
+
 }));
 
