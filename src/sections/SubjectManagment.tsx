@@ -3,13 +3,21 @@ import styles from "./SubjectManagment.module.css";
 import { CardStartNow } from "../components/CardStartNow";
 import { Subject } from "../classes/subject";
 import { useSubjectStore } from "../store/useSubjectStore";
+import { MangagmentStudents } from "../components/modals/ManagmentStudents";
 
 export const SubjectManagment = () => {
     const [studentName, setStudentName] = useState("");
     const [studentID, setStudentID] = useState<number>(0);
-    const [selectedSubject, setSelectedSubject] = useState<Subject | null>(null);
+    const [selectedSubject, setSelectedSubject] = useState<Subject>();
+    const [showModal, setShowModal] = useState(false)
 
-    const {subjects, loadSubjects} = useSubjectStore()
+    const handleClose = () => setShowModal(false)
+
+    const openModal = (subject: Subject) => {
+        setShowModal(true) 
+        setSelectedSubject(subject)
+    }
+    const { subjects, loadSubjects } = useSubjectStore()
 
     // Cargar materias desde localStorage
     useEffect(() => {
@@ -45,15 +53,28 @@ export const SubjectManagment = () => {
         <section className={styles.container}>
             <section className={styles.containerCreate}>
                 <article className={styles.containerSubject}>
-                    <h2>Subjects</h2>
-                    {subjects.map((subject, idx) => (
-                        <div key={idx}>
-                            <button onClick={() => setSelectedSubject(subject)}>
-                                Select {subject.name}
-                            </button>
-                        </div>
-                    ))}
+                    <article className={styles.subjectList}>
+                        {subjects.map((subject, idx) => (
+                            <div key={idx} className={styles.subjectCard}>
+                                <h3>{subject.name}</h3>
+                                <div>
+                                    <span>Students: 0</span>
+                                </div>
+                                <button onClick={() => openModal(subject)}>
+                                    Gestionar
+                                </button>
 
+
+                            </div>
+                        ))}
+                        {
+                            showModal && (
+                                <MangagmentStudents subject={selectedSubject} handleClose={handleClose} />
+                            )
+                        }
+                    </article>
+
+                    {/*
                     {selectedSubject && (
                         <div className={styles.subjectDetails}>
                             <h2>{selectedSubject.name}</h2>
@@ -99,7 +120,7 @@ export const SubjectManagment = () => {
                                 ))}
                             </ul>
                         </div>
-                    )}
+                    )} */}
                 </article>
             </section>
         </section>
