@@ -1,0 +1,58 @@
+
+
+.actions{
+    display: flex;
+    justify-content: space-between;
+}
+
+.actions div {
+    display: flex;
+    gap: 10px;
+
+}
+
+.actions div button {
+    background-color: var(--color-button);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.list{
+    margin-top: 10px;
+}
+
+.list h2{
+    margin-bottom: 20px;
+}
+
+.listItem{
+    display: flex;
+    justify-content: space-between;
+    background-color: #282828;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.listItem h3{
+    color: white;
+}
+
+.listItem article{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+}
+
+.buttons{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons button{
+    background-color: var(--color-button);
+    padding: 5px 10px;
+    border-radius: 5px;
+}

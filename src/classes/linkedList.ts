@@ -1,126 +1,131 @@
-import { Node } from "./nodes.ts"
-import type { Student } from "../types/type.d.ts"
-
+import { Node } from "./nodes.ts";
+import type { Student } from "../types/type.d.ts";
 
 export class LinkedList {
-    head: Node | null
+  head: Node | null;
 
-    constructor() {
-        this.head = null
+  constructor(students?: Student[]) {
+    this.head = null;
+
+    if (students && Array.isArray(students)) {
+      students.forEach((s) => this.insert(s));
+    }
+  }
+
+  // Insert a new node at the end of the list
+  insert(student: Student) {
+    const newNode = new Node(student);
+
+    if (this.head === null) {
+      this.head = newNode;
+      return;
     }
 
-    // Insert a new node at the end of the list
-    insert(student: Student){
-        const newNode = new Node(student)
-
-        if(this.head === null){
-            this.head = newNode
-            return
-        }
-
-        let currentNode = this.head
-
-        while(currentNode.next ){
-            currentNode = currentNode.next
-        }
-
-        currentNode.next = newNode
+    let currentNode = this.head;
+    while (currentNode.next) {
+      currentNode = currentNode.next;
     }
 
-    // Search a student by id
-    search(id: number): Node | null{
-        let currentNode = this.head
+    currentNode.next = newNode;
+  }
 
-        while(currentNode){
-            if(currentNode?.student.id === id) return currentNode
+  // Insert at the start
+  insertAtStart(student: Student) {
+    const newNode = new Node(student);
+    newNode.next = this.head;
+    this.head = newNode;
+  }
 
-            currentNode = currentNode?.next
-        }
+  // Search a student by id
+  search(id: number): Node | null {
+    let currentNode = this.head;
+    while (currentNode) {
+      if (currentNode.student.id === id) return currentNode;
+      currentNode = currentNode.next;
+    }
+    return null;
+  }
 
-        return null
+  // Delete a node by id
+  delete(id: number) {
+    if (!this.head) return;
+
+    if (this.head.student.id === id) {
+      this.head = this.head.next;
+      return;
     }
 
-    // Delete a node by id
-    delete(id: number){
-        if(!this.head) return
-
-        if(this.head.student.id === id){
-            this.head = this.head.next
-            return
-        }
-
-        let currentNode = this.head
-
-        while(currentNode.next){
-            if(currentNode.next.student.id === id){
-                currentNode.next = currentNode.next.next
-                return
-            }
-            currentNode = currentNode.next
-        }
+    let currentNode = this.head;
+    while (currentNode.next) {
+      if (currentNode.next.student.id === id) {
+        currentNode.next = currentNode.next.next;
+        return;
+      }
+      currentNode = currentNode.next;
     }
+  }
 
-    // Print the list
-    print(): Student[]{
-        let students: Student[] = []
-        let currentNode = this.head
-        while(currentNode){
-            students.push(currentNode.student)
-            currentNode = currentNode.next
-        }
-        return students
+  // Print (to array)
+  print(): Student[] {
+    const students: Student[] = [];
+    let currentNode = this.head;
+    while (currentNode) {
+      students.push(currentNode.student);
+      currentNode = currentNode.next;
     }
+    return students;
+  }
 
-    // Invert the list
-    invertirList(){
-        let currentNode = this.head
-        let prev: Node | null = null
-        while(currentNode){
-            const next = currentNode.next
-            currentNode.next = prev
-            prev = currentNode
-            currentNode = next
-        }
-        this.head = prev
+  // Invert list
+  invertirList() {
+    let currentNode = this.head;
+    let prev: Node | null = null;
+    while (currentNode) {
+      const next = currentNode.next;
+      currentNode.next = prev;
+      prev = currentNode;
+      currentNode = next;
     }
+    this.head = prev;
+  }
 
-    // Print the list in reverse order
-    printReverse(): Student[]{
-        let students: Student[] = []
-        let currentNode = this.head
-        while(currentNode){
-            students.push(currentNode.student)
-            currentNode = currentNode.next
-        }
-        return students.reverse()
-    }
+  // Print reversed
+  printReverse(): Student[] {
+    return this.print().reverse();
+  }
 
-    // delte repeated students
-    deleteRepeated(){
-        const ids = new Set<number>()
-        let currentNode = this.head
-        let prev: Node | null = null
-        while(currentNode){
-            if(ids.has(currentNode.student.id)){
-                if(prev){
-                    prev.next = currentNode.next
-                }
-            }else{
-                ids.add(currentNode.student.id)
-                prev = currentNode
-            }
-            currentNode = currentNode.next
-        }
+  // Delete repeated students (by email)
+  deleteRepeated() {
+    const seen = new Set<string>();
+    let currentNode = this.head;
+    let prev: Node | null = null;
+    while (currentNode) {
+      if (seen.has(currentNode.student.email)) {
+        if (prev) prev.next = currentNode.next;
+      } else {
+        seen.add(currentNode.student.email);
+        prev = currentNode;
+      }
+      currentNode = currentNode.next;
     }
+  }
 
-    // count the number of students
-    count(): number{
-        let count = 0
-        let currentNode = this.head
-        while(currentNode){
-            count++
-            currentNode = currentNode.next
-        }
-        return count
+  // Count nodes
+  count(): number {
+    let count = 0;
+    let currentNode = this.head;
+    while (currentNode) {
+      count++;
+      currentNode = currentNode.next;
     }
+    return count;
+  }
+
+  toArray(): Student[] {
+    return this.print();
+  }
+
+  static fromArray(students: Student[]): LinkedList {
+    return new LinkedList(students);
+  }
 }
