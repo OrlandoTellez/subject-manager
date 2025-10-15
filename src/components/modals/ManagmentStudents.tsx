@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useSubjectStore } from "../../store/useSubjectStore";
 import { Subject } from "../../classes/subject";
 import styles from "./ManagmentStudents.module.css";
+import { AddStudents } from "../forms/AddStudents";
 
 interface Props {
     handleClose: () => void;
@@ -29,34 +30,20 @@ export const MangagmentStudents = ({ handleClose, subject }: Props) => {
     return (
         <section className={styles.container}>
             <article className={styles.modal}>
-                <div>
+                <div className={styles.header}>
                     <h2>{subject?.name}</h2>
+                    <button type="button" onClick={handleClose} className={styles.exit}>
+                       <h2>x</h2>
+                    </button>
                 </div>
-                <form className={styles.form} onSubmit={createStudents}>
-                    <div className={styles.formInput}>
-                        <label>Nombre de la materia *</label>
-                        <input
-                            type="text"
-                            value={subjectName}
-                            onChange={(e) => setSubjectName(e.target.value)}
-                            placeholder="Nombre de la materia"
-                            required
-                        />
-                    </div>
-                    <div className={styles.formInput}>
-                        <label>Descripción</label>
-                        <textarea
-                            placeholder="Ej: Estudiantes de la materia, etc."
-                            className={styles.textarea}
-                        />
-                    </div>
-                    <div className={styles.formButtons}>
-                        <button type="button" onClick={handleClose} className={styles.exit}>
-                            Cancelar
-                        </button>
-                        <button type="submit">+ Crear Materia</button>
-                    </div>
-                </form>
+
+
+                <div className={styles.info}>
+                    <p>0 estudiantes registrados</p>
+                    <p>Lista enlazada</p>
+                </div>
+           
+                <AddStudents createStudents={createStudents} />
             </article>
         </section>
     );

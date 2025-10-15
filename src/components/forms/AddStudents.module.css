@@ -1,0 +1,38 @@
+.form{
+    background-color: #282828;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.formHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.section{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.section div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+}
+
+.formButton{
+    display: flex;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.formButton button{
+    width: 100%;
+    background-color: var(--color-button);
+    padding: 10px;
+    border-radius: 10px;
+}
