@@ -4,6 +4,7 @@ import { CardStartNow } from "../components/CardStartNow";
 import { Subject } from "../classes/subject";
 import { useSubjectStore } from "../store/useSubjectStore";
 import { MangagmentStudents } from "../components/modals/ManagmentStudents";
+import bookIcon from "../assets/icons/book.svg";
 
 export const SubjectManagment = () => {
     const [selectedSubject, setSelectedSubject] = useState<Subject>();
@@ -39,7 +40,11 @@ export const SubjectManagment = () => {
                     <article className={styles.subjectList}>
                         {subjects.map((subject, idx) => (
                             <div key={idx} className={styles.subjectCard}>
-                                <h3>{subject.name}</h3>
+                                <div className={styles.iconContainer}>
+                                    <h3>{subject.name}</h3>
+                                    <img src={bookIcon} alt="icon subject" />
+
+                                </div>
                                 <div>
                                     <span>Estudiantes: {subject.students.count()}</span>
                                 </div>

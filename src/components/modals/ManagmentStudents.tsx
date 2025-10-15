@@ -21,23 +21,28 @@ export const MangagmentStudents = ({ handleClose, subject }: Props) => {
 
   const createStudents = (
     e: React.FormEvent,
-    newStudent: Student,
+    newStudent: Omit<Student, "id">,
     addAtStart: boolean
   ) => {
     e.preventDefault();
     if (!subject) return;
     if (!newStudent.name.trim() || !newStudent.email.trim()) return;
 
-    // insertar en la lista enlazada
+    const studentWithId: Student = {
+      ...newStudent,
+      id: Date.now() + Math.floor(Math.random() * 1000) // id único
+    };
+
     if (addAtStart) {
-      subject.students.insertAtStart(newStudent);
+      subject.students.insertAtStart(studentWithId);
     } else {
-      subject.insertStudent(newStudent);
+      subject.insertStudent(studentWithId);
     }
 
     setStudents(subject.printStudents());
     updateSubject(subject);
   };
+
 
   const invertList = () => {
     if (!subject) return;
@@ -52,6 +57,25 @@ export const MangagmentStudents = ({ handleClose, subject }: Props) => {
     setStudents(subject.printStudents());
     updateSubject(subject);
   };
+
+  const deleteStudent = (id: number) => {
+    if (!subject) return;
+    subject.deleteStudent(id);
+    setStudents(subject.printStudents());
+    updateSubject(subject);
+  };
+
+  const editStudent = (id: number, updatedData: Partial<Student>) => {
+    if (!subject) return;
+
+    const node = subject.students.search(id);
+    if (node) {
+      node.student = { ...node.student, ...updatedData };
+      setStudents(subject.printStudents());
+      updateSubject(subject);
+    }
+  };
+
 
   return (
     <section className={styles.container}>
@@ -75,7 +99,10 @@ export const MangagmentStudents = ({ handleClose, subject }: Props) => {
             students={students}
             invertList={invertList}
             removeDuplicates={removeDuplicates}
+            onDeleteStudent={deleteStudent}
+            onEditStudent={editStudent}
           />
+
         </article>
       </article>
     </section>
